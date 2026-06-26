@@ -112,7 +112,7 @@ The backend was built in 4 phases, each with its own test suite:
 
 ## Where to Go Next
 
-- **[HOW_IT_WORKS.md](HOW_IT_WORKS.md)** — Deep technical explanation of every module
+- **[Getting started.md](02-getting-started.md)** — How will you run it on your machine with custom configuration
 - **[HOW_TO_BUILD.md](HOW_TO_BUILD.md)** — Set up, configure, and build the project
 - **[../how-to-use/](../how-to-use/)** — Step-by-step guides with code examples for each phase
 - **[../RUN_GUIDE.md](../RUN_GUIDE.md)** — Complete end-to-end running process

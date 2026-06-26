@@ -202,9 +202,8 @@ The snapshotter periodically rebuilds the **materialized view** (current state) 
 **Personalized PageRank (PPR)** gives each device a **subjective** trust ranking:
 
 1. **Build a trust graph**: Nodes = voter identities, edges = co-correct voting interactions (weighted by BTS scores)
-2. **Define trust seeds**: Each device chooses who to trust initially (personalization vector)
-3. **Run PageRank**: Iterative computation until convergence (damping factor = 0.85)
-4. **Result**: Each voter gets a PPR score — higher = more trusted by *this* device
+2. **Run PageRank**: Iterative computation until convergence (damping factor = 0.85)
+3. **Result**: Each voter gets a PPR score — higher = more trusted by *this* device
 
 **Subjective forks**: Two students with different trust seeds see different trust scores for the same rumor. This is intentional — the system respects epistemic sovereignty.
 
@@ -313,14 +312,12 @@ The system is **AP** (Available + Partition-Tolerant) from the CAP theorem, with
 | Traffic Analysis | Noise encryption + ZK proofs hide identity |
 | Admin Takeover | Personalized PageRank + subjective forks |
 | Ghost Reputation | OpLog re-traversal + tombstones |
-| Eclipse Attack | Kademlia DHT + multiple discovery mechanisms |
 | Data Corruption | Rebuild materialized view from immutable OpLog |
 
 ---
 
 ## Further Reading
 
-- **[ARCHITECTURE_DESIGN.md](ARCHITECTURE_DESIGN.md)** — Detailed architecture diagrams
-- **[PROTOCOL_SPEC.md](PROTOCOL_SPEC.md)** — Wire protocol, message schemas, error codes
-- **[SCORING_ENGINE_SPEC.md](SCORING_ENGINE_SPEC.md)** — Full mathematical specification
-- **[PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md)** — File-by-file module API reference
+- **[ARCHITECTURE_DESIGN.md](../reference/01-architecture.md)** — Detailed architecture diagrams
+- **[PROTOCOL_SPEC.md](../reference/02-protocol.md)** — Wire protocol, message schemas, error codes
+- **[SCORING_ENGINE_SPEC.md](../reference/06-scoring-logic.md)** — Full mathematical specification

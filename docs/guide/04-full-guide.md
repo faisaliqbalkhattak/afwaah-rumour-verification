@@ -540,7 +540,6 @@ All settings are in `backend/src/config.js`. Here are the key ones you might wan
 | Setting | Default | Effect |
 |---------|---------|--------|
 | `ALLOWED_DOMAINS` | `['university.edu', 'student.university.edu']` | Which email domains are accepted for registration |
-| `ADMIN_DOMAINS` | `['admin.university.edu']` | Which domains can inject official proofs |
 | `ROOT_HISTORY_SIZE` | `10` | How many old Merkle roots are still accepted (allows for network delay) |
 
 ### Scoring
@@ -567,19 +566,6 @@ All settings are in `backend/src/config.js`. Here are the key ones you might wan
 | Setting | Default | Effect |
 |---------|---------|--------|
 | `SNAPSHOT_INTERVAL` | `10` | Rebuild materialized view every N operations |
-
----
-
-## 10. Troubleshooting
-
-| Problem | Solution |
-|---------|----------|
-| `Cannot use import statement outside a module` | Use `--experimental-vm-modules` flag. Node 18+ required. |
-| Tests hang and don't exit | Add `--forceExit` flag. libp2p sockets need time to close. |
-| `EADDRINUSE` errors | Wait a few seconds, or kill leftover Node processes: `taskkill /F /IM node.exe` (Windows) |
-| npm install fails | Install C++ build tools: VS Build Tools (Windows), `build-essential` (Linux), Xcode CLT (Mac) |
-| OrbitDB stale data | Delete `./orbitdb` and `./ipfs` directories and retry |
-| Only some tests pass | Run them individually with `--verbose` to see which ones fail and read the error messages |
 
 ---
 

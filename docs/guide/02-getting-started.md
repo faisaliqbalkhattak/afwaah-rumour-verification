@@ -1,15 +1,14 @@
 # Afwaah — Getting Started Guide
 
-> **For teammates joining the project.** Read this first.
-> Last updated: February 2026
+> Last updated: July 2026
 
 ---
 
 ## What You're Looking At
 
-This is the backend infrastructure for **Afwaah** — a decentralized, anonymous campus rumor verification system. There is no server. Every student's device runs the full stack. You're going to help build the **frontend GUI** on top of this.
+This is the backend infrastructure for **Afwaah** — a decentralized, anonymous campus rumor verification system. There is no server. Every student's device runs the full stack. 
 
-The backend is **done** and tested. Your job is to make it usable by humans.
+The backend is **done** and tested. Your job is to make it usable by humans by making custom changes to the GUI layer.
 
 ---
 
@@ -54,7 +53,7 @@ This will take 1-2 minutes. It installs ~970 packages including:
 npx --node-options="--experimental-vm-modules" jest --verbose --forceExit
 ```
 
-You should see **85+ tests passing** across 3 test files. If tests fail, check:
+You should see **200+ tests passing** across 4 test files. If tests fail, check:
 - Node version (must be ≥18)
 - Are you in the `backend/` directory?
 - Did `npm install` complete without errors?
@@ -115,6 +114,8 @@ Student Device
 |------|-------------|
 | `node.js` | Creates a libp2p node with TCP, Noise encryption, Yamux muxing, mDNS discovery, KadDHT |
 | `gossip-controller.js` | Validates incoming messages (schema, nullifier dedup, topic rules), publishes outgoing messages |
+| `anti-entropy.js` |  Handles state reconciliation between peers after periods of disconnection using Merkle tree comparison and read-repair. |
+
 
 **Gossip Topics:**
 - `/afwaah/rumors/1.0` — new rumor broadcasts
@@ -144,6 +145,7 @@ Student Device
 | `rbts-engine.js` | Robust BTS — peer-pairing variant for small groups (3 ≤ N < 30) |
 | `reputation-manager.js` | Trust scores, staking, slashing, decay/recovery |
 | `correlation-dampener.js` | Detects bot clusters via Pearson correlation, dampens their vote weight |
+| `trust-propagator.js` |  Computes subjective trust rankings using PPR so each device can independently weight truth via its own trust seeds. |
 
 **Key concept:** BTS asks two questions: "What do you believe?" and "What do you think others believe?" It's mathematically proven that your best strategy is to answer both honestly.
 
@@ -182,11 +184,9 @@ npx --node-options="--experimental-vm-modules" jest tests/scoring.test.js --verb
 
 If you're short on time, read these in order:
 
-1. **`docs/ARCHITECTURE_DESIGN.md`** — system diagrams, module layout
-2. **`docs/PROTOCOL_SPEC.md`** — message formats (you'll need these for the frontend)
-3. **`docs/FRONTEND_GUIDE.md`** — step-by-step frontend development guide
-4. **`backend/src/config.js`** — all the constants
-5. **`backend/tests/`** — see how every module is used (tests are living documentation)
+1. **[docs/reference/01-architecture.md](../reference/01-architecture.md)** — system diagrams, module layout
+2. **[docs/PROTOCOL_SPEC.md](../reference/02-protocol.md)** — message formats (you'll need these for the frontend)
+4. **[backend/src/config.js](../../backend/src/config.js)** — all the constants
 
 ---
 
@@ -240,9 +240,3 @@ git push origin feature/your-feature-name
 
 ---
 
-## Next Steps
-
-1. Read `docs/FRONTEND_GUIDE.md` for the frontend development plan
-2. Pick a page to build (Join, Feed, Post, Vote, or Profile)
-3. Wire it up to the backend modules
-4. Ask questions in the group chat!
