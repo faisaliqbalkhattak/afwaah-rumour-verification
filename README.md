@@ -125,7 +125,7 @@ To join the anonymous group, you prove ownership of a university email without r
 
 **Getting a `.eml` from Gmail:**
 1. Open any email from your university inbox 
-2. The Inbox should be in allowed domains see under ["backend\src\config.js"](backend\src\config.js)
+2. The Inbox should be in allowed domains see under ["backend\src\config.js"](backend/src/config.js)
 3. Add your desired domian there then go to next step
 4. Click the three-dot menu → **"Download message"**
 5. Upload the downloaded `.eml` file to Afwaah
