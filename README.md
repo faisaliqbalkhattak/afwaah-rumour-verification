@@ -161,4 +161,4 @@ export const IDENTITY = {
 
 *216 tests passing. Zero central authorities.*
 
-NOTE: If any link or path (local: those pointing internally to the project files) is not working this will be issue of windows path are not compatable with linux. The paths i have used or Windows compatable.
+NOTE: If any link or path (local: those pointing internally to the project files) is not working the issue will be that windows path are not compatable with linux. The paths I have used are Windows compatable.
