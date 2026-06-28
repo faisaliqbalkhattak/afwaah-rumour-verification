@@ -5,7 +5,7 @@
 
 Afwaah (Urdu for *rumor*) is a peer-to-peer infrastructure where students post and verify campus rumors anonymously. Every device is a node. Truth is determined not by who shouts loudest, but by **Bayesian game theory** — a mechanism where lying is mathematically unprofitable.
 
-Built for the NUST Olympiad Hackathon.
+Built in the NUST Olympiad Hackathon.
 
 ---
 
@@ -68,7 +68,7 @@ Campus information travels fast and is often wrong. Existing solutions either re
 **Identity & Privacy**
 - [Semaphore Protocol](https://semaphore.pse.dev/) — ZK group membership proofs
 - ZK-Email / DKIM — cryptographic university email verification
-- Poseidon hash (Baby Jubjub curve) — ZK-friendly nullifier generation
+
 
 **Truth Scoring**
 - Bayesian Truth Serum (Prelec, 2004) — incentive-compatible voting for N ≥ 30
@@ -101,8 +101,8 @@ Campus information travels fast and is often wrong. Existing solutions either re
 ### Installation
 
 ```bash
-git clone https://github.com/Hassan-Shahid123/afwaah-campus-rumour-system.git
-cd afwaah-campus-rumour-system/backend
+git clone https://github.com/faisaliqbalkhattak/afwaah-rumour-verification.git
+cd afwaah-rumour-verification/backend
 npm install
 npm test
 ```
@@ -124,11 +124,14 @@ npm test
 To join the anonymous group, you prove ownership of a university email without revealing the address. This requires a `.eml` file.
 
 **Getting a `.eml` from Gmail:**
-1. Open any email from your university inbox
-2. Click the three-dot menu → **"Download message"**
-3. Upload the downloaded `.eml` file to Afwaah
+1. Open any email from your university inbox 
+2. The Inbox should be in allowed domains see under ["backend\src\config.js"](backend\src\config.js)
+3. Add your desired domian there then go to next step
+4. Click the three-dot menu → **"Download message"**
+5. Upload the downloaded `.eml` file to Afwaah
+6. Select the "Verify Identity" option in the app.
 
-The system verifies the DKIM cryptographic signature in the email (fetching the RSA public key directly from your university's DNS), confirms the signing domain is a known university domain, and checks the `Delivered-To` header to confirm it reached your inbox — all without ever seeing your email address.
+The system verifies the DKIM cryptographic signature in the email (fetching the RSA public key directly from your university's DNS), confirms the signing domain is a known university domain, and checks the `Delivered-To` header to confirm it reached your inbox — all without ever storing or verifying your email address.
 
 ### Configuring Allowed Domains
 
@@ -143,7 +146,7 @@ export const IDENTITY = {
 
 ## Live Demo
 
-[https://afwaah-campus-rumour-system-murex.vercel.app/](https://afwaah-campus-rumour-system-murex.vercel.app/)
+[https://afwaah-rumour-verification.vercel.app/](https://afwaah-rumour-verification.vercel.app/)
 
 ---
 
@@ -153,7 +156,6 @@ export const IDENTITY = {
 2. Prelec, D., Seung, H. S., & McCoy, J. (2017). "A solution to the single-question crowd wisdom problem." *Nature*, 541, 532–535.
 3. [Semaphore Protocol](https://semaphore.pse.dev/)
 4. [libp2p](https://libp2p.io/)
-5. Grassi et al. (2021). "Poseidon: A New Hash Function for Zero-Knowledge Proof Systems."
 
 ---
 
